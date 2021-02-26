@@ -7,7 +7,6 @@ namespace SmartSchool.API.Data
     public class Repository : IRepository
     {
         private readonly SmartContext _context;
-
         public Repository(SmartContext context)
         {
             _context = context;
@@ -32,7 +31,7 @@ namespace SmartSchool.API.Data
             return (_context.SaveChanges() > 0);
         }
 
-        public Aluno[] GetAllAlunos(bool includeProfessor)
+        public Aluno[] GetAllAlunos(bool includeProfessor = false)
         {
             IQueryable<Aluno> query = _context.Alunos;
             if(includeProfessor){
@@ -85,7 +84,7 @@ namespace SmartSchool.API.Data
                                     .ThenInclude(a => a.Aluno); 
             }
 
-            query = query.AsNoTracking().OrderBy(a => a.Nome);
+            query = query.AsNoTracking().OrderBy(a => a.Id);
             return query.ToArray();
         }
 
@@ -94,15 +93,15 @@ namespace SmartSchool.API.Data
             IQueryable<Professor> query = _context.Professores;
             if(includeAlunos){
                 query = query.Include(p => p.Disciplina)
-                                    .ThenInclude(d => d.AlunoDisciplina)
-                                    .ThenInclude(a => a.Aluno); 
+                             .ThenInclude(d => d.AlunoDisciplina)
+                             .ThenInclude(a => a.Aluno); 
             }
 
             query = query.AsNoTracking()
-                                .OrderBy(aluno => aluno.Id)
-                                .Where(aluno => aluno.Disciplina.Any(
-                                    d => d.AlunoDisciplina.Any(ad => ad.DisciplinaId == disciplinaId)
-                                ));
+                         .OrderBy(aluno => aluno.Id)
+                         .Where(aluno => aluno.Disciplina.Any(
+                                d => d.AlunoDisciplina.Any(ad => ad.DisciplinaId == disciplinaId)
+                         ));
                                 
             return query.ToArray(); 
         }
@@ -112,8 +111,8 @@ namespace SmartSchool.API.Data
             IQueryable<Professor> query = _context.Professores;
             if(includeAlunos){
                 query = query.Include(p => p.Disciplina)
-                                    .ThenInclude(d => d.AlunoDisciplina)
-                                    .ThenInclude(a => a.Aluno); 
+                             .ThenInclude(d => d.AlunoDisciplina)
+                             .ThenInclude(a => a.Aluno); 
             }
 
             query = query.AsNoTracking().OrderBy(a => a.Id)

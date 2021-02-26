@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SmartSchool.API.Data;
+using SmartSchool.API.DTOs;
 using SmartSchool.API.Models;
 using System;
 using System.Collections.Generic;
@@ -15,10 +17,12 @@ namespace SmartSchool.API.Controllers
     public class ProfessorController : ControllerBase
     {
         public readonly IRepository _repo;
+        private readonly IMapper _mapper;
 
-        public ProfessorController(IRepository repo)
+        public ProfessorController(IRepository repo, IMapper mapper)
         {
             _repo = repo;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -33,6 +37,9 @@ namespace SmartSchool.API.Controllers
         {
             var professor = _repo.GetAllProfessorById(id, false);
             if (professor == null) return BadRequest("Professor não encontrado");
+            
+            var professorDTO = _mapper.Map<ProfessorDTO>(professor);
+
             return Ok(professor);
         }
 
