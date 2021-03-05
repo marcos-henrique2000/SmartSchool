@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SmartSchool.API.Data;
-using SmartSchool.API.DTOs;
+using SmartSchool.API.V1.DTOs;
 using SmartSchool.API.Models;
 using System;
 using System.Collections.Generic;
@@ -11,10 +11,14 @@ using System.Threading.Tasks;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace SmartSchool.API.Controllers
+namespace SmartSchool.API.V1.Controllers
 {
-    [Route("api/[controller]")]
+    /// <summary>
+    ///  
+    /// </summary>
     [ApiController] 
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class AlunoController : ControllerBase
     {
         public readonly IRepository _repo;
@@ -26,7 +30,10 @@ namespace SmartSchool.API.Controllers
             _mapper = mapper;
         }
 
-        // GET: api/<AlunoController>
+        /// <summary>
+        /// Metodo responsavel para retornar todos os meus alunos
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult Get()
         {
@@ -34,13 +41,22 @@ namespace SmartSchool.API.Controllers
             
             return Ok(_mapper.Map<IEnumerable<AlunoDTO>>(alunos));
         }
+
+        /// <summary>
+        /// Metodo responsavel por retorna apenas um unico alunoDTO
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("getRegister")]
         public IActionResult GetRegister()
         {
             return Ok(new AlunoRegistrarDTO());
         }
 
-        // GET api/<AlunoController>/5
+        /// <summary>
+        /// Metodo responsavel por retornar apenas um aluno por meio do Codigo ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {

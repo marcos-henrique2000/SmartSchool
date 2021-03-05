@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SmartSchool.API</name>
+    </assembly>
+    <members>
+        <member name="T:SmartSchool.API.V1.Controllers.AlunoController">
+            <summary>
+             
+            </summary>
+        </member>
+        <member name="M:SmartSchool.API.V1.Controllers.AlunoController.Get">
+            <summary>
+            Metodo responsavel para retornar todos os meus alunos
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SmartSchool.API.V1.Controllers.AlunoController.GetRegister">
+            <summary>
+            Metodo responsavel por retorna apenas um unico alunoDTO
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SmartSchool.API.V1.Controllers.AlunoController.Get(System.Int32)">
+            <summary>
+            Metodo responsavel por retornar apenas um aluno por meio do Codigo ID
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SmartSchool.API.V1.DTOs.AlunoDTO.Id">
+            <summary>
+            Identificador e chave do banco de dados
+            </summary>
+        </member>
+        <member name="P:SmartSchool.API.V1.DTOs.AlunoDTO.Matricula">
+            <summary>
+            Chave do Aluno para outros negocios da Instituicao
+            </summary>
+        </member>
+        <member name="T:SmartSchool.API.V1.DTOs.AlunoRegistrarDTO">
+            <summary>
+            Este � o DTO de Aluno para Registrar
+            </summary>
+        </member>
+        <member name="P:SmartSchool.API.V1.DTOs.AlunoRegistrarDTO.Id">
+            <summary>
+            Identificador e chave do banco de dados
+            </summary>
+        </member>
+        <member name="P:SmartSchool.API.V1.DTOs.AlunoRegistrarDTO.Matricula">
+            <summary>
+            Chave do Aluno para outros negocios da Instituicao
+            </summary>
+        </member>
+        <member name="T:SmartSchool.API.V2.Controllers.AlunoController">
+            <summary>
+             
+            </summary>
+        </member>
+        <member name="M:SmartSchool.API.V2.Controllers.AlunoController.Get">
+            <summary>
+            Metodo responsavel para retornar todos os meus alunos
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SmartSchool.API.V2.Controllers.AlunoController.Get(System.Int32)">
+            <summary>
+            Metodo responsavel por retornar apenas um aluno por meio do Codigo ID
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SmartSchool.API.V2.DTOs.AlunoDTO.Id">
+            <summary>
+            Identificador e chave do banco de dados
+            </summary>
+        </member>
+        <member name="P:SmartSchool.API.V2.DTOs.AlunoDTO.Matricula">
+            <summary>
+            Chave do Aluno para outros negocios da Instituicao
+            </summary>
+        </member>
+        <member name="T:SmartSchool.API.V2.DTOs.AlunoRegistrarDTO">
+            <summary>
+            Este � o DTO de Aluno para Registrar
+            </summary>
+        </member>
+        <member name="P:SmartSchool.API.V2.DTOs.AlunoRegistrarDTO.Id">
+            <summary>
+            Identificador e chave do banco de dados
+            </summary>
+        </member>
+        <member name="P:SmartSchool.API.V2.DTOs.AlunoRegistrarDTO.Matricula">
+            <summary>
+            Chave do Aluno para outros negocios da Instituicao
+            </summary>
+        </member>
+    </members>
+</doc>
